@@ -1,0 +1,664 @@
+<html>
+    <head>
+        <title>Covid19 India | SGP</title>
+        <link rel="icon" href="{{url_for('static', filename='title_image.png')}}" type="image/image/x-icon">
+        <meta charset="utf-8">
+        <meta name='viewport' content='width=device-width initial-scale=1.0'>
+        <meta name='viewport' content='height=device-height initial-scale=1.0'>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+        
+        <!--Navbar styling-->
+        <style>  
+            header{
+                width: 100%;
+                height: 8%;
+                background-color: #282828;
+                }
+
+                #nav_h1{
+                    position: absolute;
+                    padding: 1px;
+                    float: left;
+                    margin-left: 2%;
+                    margin-top: 10px;
+                    font-family: 'Alfa Slab One', cursive;
+                    font-size: 3vh;
+                    color: orange;
+                }
+
+                #nav_19 {
+                    color: white;
+                    font-size: 3vh;
+                }
+                #nav_span{
+                    color: lightgreen;
+                    font-size: 3vh;
+                }
+
+                #nav_ul{
+                    width: auto;
+                    float: right;
+                    margin-top: 8px;
+                }
+
+                #nav_li{
+                    display: inline-block;
+                    padding: 15px 30px;
+                }
+
+                #nav_a{
+                    text-align: center;
+                    color: white;
+                    text-decoration: none;
+                    font-family: "Times New Roman", Times, serif;
+                    font-size: 100%;
+
+                    /* Remove this once dropdown menu and other pages of the website are made */
+                    display: none;
+                }
+
+                #nav_a:hover{
+                    color: yellow;
+                    transition: 0.5s;
+                }
+        </style>
+        <!--Navbar styling-->
+        
+        <!--Styling for entire page-->
+        <style>
+
+            body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+            }
+
+            #container {
+                background-color: white;
+                height: 80%;
+                width: 100%;
+                margin-left: 2px;
+                margin-right: 2px;
+                padding-bottom: 0px;
+            }
+            
+            #content {
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+                height: 100%;
+                width: 99%;
+                overflow: scroll;
+
+            }
+            main {
+                height: 100%;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 52% 47%;
+                grid-template-rows: 47.5% 52.5% 52.5%;
+
+                margin-bottom: 0px;
+            }
+
+            #map {
+                float: left;
+                border: 1px solid lightgrey;
+                border-radius: 10px;
+                margin-right: 10px;
+                background-color: #f1f8e9;
+                grid-column: 1;
+                grid-row: 1/3;
+                margin-bottom: 10px;
+            }
+
+            #numbers {
+                border: 1px solid lightgrey;
+                border-radius: 5px;
+                width: 100%;
+                margin-bottom: 10px;
+                background-color: #F5F5F5;
+                grid-column: 2;
+                grid-template-columns: 50% 50%;
+            }
+
+            #number_holder {
+                    width: 100%;
+                    grid-template-columns: 50% 50%;
+                    grid-template-rows: 50% 50%;
+                }
+
+                #number_ul_1 {
+                    float: left;
+                    height: 100%;
+                    list-style: None;
+                    padding: 0px 0px 0px 0px;
+                    grid-column: 1;
+                    grid-row: 1;
+                    margin-top: 3%;
+                    margin-left: 5%;
+                    margin-bottom: 0%;
+                }
+
+                #number_ul_2 {
+                    float: right;
+                    height: 100%;
+                    list-style: None;
+                    padding: 0px 0px 0px 0px;
+                    grid-column: 1;
+                    grid-row: 2;
+                    margin-top: 3%;
+                    margin-left: 5%;
+                    margin-bottom: 0%;
+                }
+
+                #number_ul_3 {
+                    float: left;
+                    height: 100%;
+                    list-style: None;
+                    padding: 0px 0px 0px 0px;
+                    grid-column: 2;
+                    grid-row: 1;
+                    margin-top: 3%;
+                    margin-left: 5%;
+                    margin-bottom: 0%;
+                }
+                
+                #number_ul_4 {
+                    float: left;
+                    height: 100%;
+                    list-style: None;
+                    padding: 0px 0px 0px 0px;
+                    grid-column: 2;
+                    grid-row: 2;
+                    margin-top: 3%;
+                    margin-left: 5%;
+                    margin-bottom: 0%;
+                }
+
+                #number_li {
+                    margin-left: 10px;
+                    padding: 0px 0px 0px 0px;
+                }
+
+                #number_img {
+                    padding-top: 2.5%;
+                    padding-left: 23%;
+                    float: left;
+                    width: 10%;
+                }
+
+                #number_num {
+                    font-family: 'Roboto Mono', monospace;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                    padding-top: 2%;
+                    padding-left: 30%
+                }
+                #number_text {
+                    font-family: 'Roboto Mono', monospace;
+                    font-size: 1vw;
+                    text-transform: uppercase;
+                    padding: 0px 0px 0px 0px;
+                    
+                }
+
+            #chart_div_1 {
+                border: 1px solid lightgrey;
+                border-radius: 5px;
+                grid-column: 2;
+                grid-row: 2;
+                margin-bottom: 10px;
+            }
+
+            #chart_div_2 {
+                border: 1px solid lightgrey;
+                border-radius: 5px;
+                grid-column: 2;
+                grid-row: 3;
+                margin-bottom: 10px; 
+            }
+
+            #chart_div_3 {
+                margin-right: 10px;
+                /*margin-top: 10px;*/
+                border: 1px solid lightgrey;
+                border-radius: 5px;
+                grid-column: 1;
+                grid-row: 3;
+                margin-bottom: 10px; 
+            }
+
+            #footer {
+                height: 8.7%;
+                width: 100%;
+                padding: 0px 0px 0px 0px;
+                text-align: right;
+                background-color: #282828;
+                color: lightgrey
+            }
+            
+            #footer-text {
+                padding-top: 13.5px;
+                padding-right: 18px;
+            }
+            
+            /* Styling for phones:*/
+            @media only screen and (max-width: 750px) {
+                #nav_a {
+                    display: none;
+                }
+
+                body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                }
+
+                #container {
+                    background-color: white;
+                    height: 80%;
+                    width: 92.5%;
+                    margin-left: 2px;
+                    margin-right: 2px;
+                    padding-bottom: 0px;
+                }
+            
+                #content {
+                    margin-top: 10px;
+                    margin-left: 10px;
+                    height: 100%;
+                    width: 100%;
+                    overflow: scroll;
+                }
+                
+                main {
+                    height: 100%;
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: 100%;
+                    grid-template-rows: 40% 60% 52% 52% 52%;
+                    margin-bottom: 0px;
+                }
+                #map {
+                    /*float: left; */
+                    width: 99.3%;
+                    border: 1px solid lightgrey;
+                    border-radius: 10px;
+                    background-color: #f1f8e9;
+                    grid-column: 1;
+                    grid-row: 2;
+                    margin-bottom: 10px;
+                }
+
+                #numbers {
+                    width: 99.3%;
+                    border: 1px solid lightgrey;
+                    border-radius: 5px;
+                    background-color: #F5F5F5;
+                    grid-column: 1;
+                    grid-row: 1;
+                }
+
+                #number_holder {
+                    width: 100%;
+                    grid-template-columns: 50% 50%;
+                    grid-template-rows: 50% 50%;
+                }
+
+                    #number_ul_1 {
+                        float: left;
+                        height: 100%;
+                        list-style: None;
+                        padding: 0px 0px 0px 0px;
+                        grid-column: 1;
+                        grid-row: 1;
+                        margin-top: 3%;
+                    }
+
+                    #number_ul_2 {
+                        float: right;
+                        height: 100%;
+                        list-style: None;
+                        padding: 0px 0px 0px 0px;
+                        grid-column: 1;
+                        grid-row: 2;
+                        margin-top: 3%;
+                    }
+
+                    #number_ul_3 {
+                        float: left;
+                        height: 100%;
+                        list-style: None;
+                        padding: 0px 0px 0px 0px;
+                        grid-column: 2;
+                        grid-row: 1;
+                        margin-top: 3%;
+                    }
+                    
+                    #number_ul_4 {
+                        float: left;
+                        height: 100%;
+                        list-style: None;
+                        padding: 0px 0px 0px 0px;
+                        grid-column: 2;
+                        grid-row: 2;
+                        margin-top: 3%;
+                    }
+
+                    #number_li {
+                        margin-left: 10px;
+                        padding: 0px 0px 0px 0px;
+                    }
+
+                    #number_img {
+                        padding-top: 5%;
+                        padding-left: 25%;
+                        float: left;
+                        width: 12%;
+                    }
+
+                    #number_num {
+                        font-family: 'Roboto Mono', monospace;
+                        font-size: 2vh;
+                        font-weight: bold;
+                        padding-top: 5%;
+                        padding-left: 30%
+                    }
+                    #number_text {
+                        font-family: 'Roboto Mono', monospace;
+                        font-size: 1.5vh;
+                        text-transform: uppercase;
+                        padding: 0px 0px 0px 0px;
+                        
+                    }
+
+                #chart_div_1 {
+                    border: 1px solid lightgrey;
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                    grid-column: 1;
+                    grid-row: 3;
+                }
+
+                #chart_div_2 {
+                    border: 1px solid lightgrey;
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                    grid-column: 1;
+                    grid-row: 4;
+                }
+
+                #chart_div_3 {
+                    border: 1px solid lightgrey;
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                    grid-column: 1;
+                    grid-row: 5;
+                    margin-right: 0px;
+                }
+
+                #footer {
+                    width: 100%;
+                    text-align: right;
+                    background-color: #282828;
+                    color: lightgrey;
+                    position: relative;
+                    clear: both;
+                }
+            }
+            /* Styling for phones:*/
+            
+        </style>
+        <!--Styling for entire page-->
+
+        <script>
+            location.replace('#chart_div_3');
+        </script>
+    
+        <!-- Google line chart cases-->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {packages: ['corechart', 'line']});
+            google.charts.setOnLoadCallback(drawBackgroundColor);
+
+            function drawBackgroundColor() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('datetime', 'Date');
+                data.addColumn('number', 'Cases');
+                
+                var upload_array_linechart = []
+                
+                //Recieving arrays from backend
+                var get_array_dates = JSON.parse({{upload_trend_dates|tojson|safe}});
+                var get_array_cases = JSON.parse({{upload_trend_cases|tojson|safe}});
+
+                //Verification
+                //console.log(get_array_dates)
+                //console.log(get_array_cases)
+
+                for (let i = 0; i < get_array_dates.length; i++) {
+                    upload_array_linechart.push([new Date(get_array_dates[i]), get_array_cases[i]])
+                }
+
+                console.log(upload_array_linechart)
+
+                data.addRows(upload_array_linechart)
+
+                var options = {
+                    title: 'No. Cases over time',
+                    hAxis: {
+                    title: 'Date (MM-DD-YY)'
+                    },
+                    vAxis: {
+                    title: 'Number of cases'
+                    },
+                    backgroundColor: '#F5F5F5',
+                    legend: 'none'
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div_1'));
+                chart.draw(data, options);
+                }
+        </script>
+    <!-- Google line chart cases-->
+
+    <!-- Google line chart deaths-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+            google.charts.load('current', {packages: ['corechart', 'line']});
+            google.charts.setOnLoadCallback(drawBackgroundColor);
+
+            function drawBackgroundColor() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('datetime', 'Date');
+                data.addColumn('number', 'Deaths');
+                
+                var upload_array_linechart = []
+                
+                //Recieving arrays from backend
+                var get_array_dates = JSON.parse({{upload_trend_dates|tojson|safe}});
+                var get_array_deaths = JSON.parse({{upload_trend_deaths|tojson|safe}});
+
+                //Verification
+                //console.log(get_array_dates)
+                //console.log(get_array_deaths)
+
+                for (let i = 0; i < get_array_dates.length; i++) {
+                    upload_array_linechart.push([new Date(get_array_dates[i]), get_array_deaths[i]])
+                }
+
+                console.log(upload_array_linechart)
+
+                data.addRows(upload_array_linechart)
+
+                var options = {
+                    title: 'No. Deaths over time',
+                    hAxis: {
+                    title: 'Date (MM-DD-YY)'
+                    },
+                    vAxis: {
+                    title: 'Number of Deaths'
+                    },
+                    backgroundColor: '#F5F5F5',
+                    legend: 'none',
+                    colors: ['red']
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div_2'));
+                chart.draw(data, options);
+                }
+        </script>
+    <!-- Google line chart deaths-->
+
+    <!-- Google line chart recoveries-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+            google.charts.load('current', {packages: ['corechart', 'line']});
+            google.charts.setOnLoadCallback(drawBackgroundColor);
+
+            function drawBackgroundColor() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('datetime', 'Date');
+                data.addColumn('number', 'Recovered');
+                
+                var upload_array_linechart = []
+                
+                //Recieving arrays from backend
+                var get_array_dates = JSON.parse({{upload_trend_dates|tojson|safe}});
+                var get_array_recoveries = JSON.parse({{upload_trend_recovered|tojson|safe}});
+
+                //Verification
+                //console.log(get_array_dates)
+                //console.log(get_array_recoveries)
+
+                for (let i = 0; i < get_array_dates.length; i++) {
+                    upload_array_linechart.push([new Date(get_array_dates[i]), get_array_recoveries[i]])
+                }
+
+                console.log(upload_array_linechart)
+
+                data.addRows(upload_array_linechart)
+
+                var options = {
+                    title: 'No. Recoveries over time',
+                    hAxis: {
+                    title: 'Date (MM-DD-YY)'
+                    },
+                    vAxis: {
+                    title: 'Number of Recoveries'
+                    },
+                    backgroundColor: '#F5F5F5',
+                    legend: 'none',
+                    colors: ['green']
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div_3'));
+                chart.draw(data, options);
+                }
+        </script>
+    <!-- Google line chart recoveries-->
+
+    <!-- Google geo state chart-->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {
+                'packages':['geochart'],
+                'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+            });
+            google.charts.setOnLoadCallback(drawRegionsMap);
+            
+            //Recieving arrays from backend
+            var get_state_names = JSON.parse({{upload_state_names|tojson|safe}});
+            var get_state_cases = JSON.parse({{upload_state_cases|tojson|safe}})
+            var get_state_deaths = JSON.parse({{upload_state_deaths|tojson|safe}})
+            
+            upload_array_geochart = [['State', 'Cases', 'Deaths']]
+            
+            //Verification
+            //console.log(get_state_names, get_state_cases, get_state_deaths)
+            
+            for (let i = 0; i < get_state_names.length; i++) {
+                upload_array_geochart.push([get_state_names[i], get_state_cases[i], get_state_deaths[i]])
+            }
+
+            console.log(upload_array_geochart)
+
+            function drawRegionsMap() {
+                var data = google.visualization.arrayToDataTable(upload_array_geochart);
+
+                var options = {
+                    region: 'IN',
+                    resolution: 'provinces',
+                    backgroundColor: '#F5F5F5',
+                    colorAxis: {colors: ['00FFCC', 'red']}
+                };
+
+                var chart = new google.visualization.GeoChart(document.getElementById('map'));
+
+                chart.draw(data, options);
+            }
+        </script>
+    <!-- Google geo state chart-->
+    </head>
+    
+    <body>
+        <header>
+            <nav>
+                <h1 id=nav_h1>Covid <span id="nav_19">19</span><span id="nav_span">India</span></h1>
+                <ul id="nav_ul">
+                    <li id="nav_li"><a id="nav_a" href="#">Home</a></li>
+                    <li id="nav_li"><a id="nav_a" href="#">Sources</a></li>
+                    <li id="nav_li"><a id="nav_a" href="#">Contact Me</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="container">
+            <div id="content">
+                <main>
+                    <div id="map"></div>
+
+                    <div id="numbers">
+                        <form method="POST">
+                            <main id="number_holder">
+                                <ul id="number_ul_1">
+                                    <li id="number_li"><h3 id="number_text">Total Confirmed Cases:</h2></li>
+                                    <li id="number_li_stat"><img id="number_img" src="{{url_for('static', filename='cases.png')}}"></img><h2 id="number_num">{{total_cases}}</h2></li>
+                                </ul>
+
+                                <ul id="number_ul_2">
+                                    <li id="number_li"><h3 id="number_text">Total Deaths:</h2></li>
+                                    <li id="number_li_stat"><img id="number_img" src="{{url_for('static', filename='dead.png')}}"></img><h2 id="number_num">{{total_deaths}}</h2></li>
+                                </ul>
+
+                                <ul id="number_ul_3">
+                                    <li id="number_li"><h3 id="number_text">Total individuals tested:</h2></li>
+                                    <li id="number_li_stat"><img id="number_img" src="{{url_for('static', filename='hospitalized.png')}}"></img><h2 id="number_num">{{total_hospitalized}}</h2></li>
+                                </ul>
+
+                                <ul id="number_ul_4">
+                                    <li id="number_li"><h3 id="number_text">Total Recovered:</h2></li>
+                                    <li id="number_li_stat"><img id="number_img" src="{{url_for('static', filename='recovered.png')}}"></img><h2 id="number_num">{{total_recovered}}</h2></li>
+                                </ul>
+                                
+                            </main>
+                        </form>
+                    </div>
+
+                    <div id='chart_div_1'></div>        
+                    
+                    <div id="chart_div_2"></div>
+
+                    <div id="chart_div_3"></div>
+                </main>
+            </div>
+
+            </div>
+            <div id="footer">
+                <h3 id="footer-text">Copyright &copy; Shreevathsa GP</h3>
+            </div>
+        
+        </div>
+    </body>
+    
+</html>
